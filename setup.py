@@ -4,9 +4,9 @@ import shutil
 from setuptools import setup, find_packages, find_namespace_packages
 from setuptools.command.install import install
 
-# Change name to "astroraytrace" when you want to
+# Change name to "gaiacmdfit" when you want to
 #  load to PYPI
-pypiname = 'astroraytrace'
+#pypiname = 'gaiacmdfit'
 
 setup(name="gaiacmdfit",
       version='1.0.0',
