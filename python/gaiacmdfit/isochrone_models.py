@@ -10,6 +10,7 @@ from scipy.ndimage import convolve
 from scipy.signal import convolve2d
 from astropy.table import Table
 from scipy.interpolate import interp1d
+from . import utils
 
 ISOGRID = isochrone.load()
 
@@ -122,6 +123,7 @@ def fineisochrone(iso,n=10000):
     
 def loadmodels():
     """ Load all models."""
+    datadir = utils.datadir()+'/synthgiants/'
     ages = np.arange(0.5,13,0.1)
     metals = np.arange(-2.0,0.25,0.05)
     models = len(ages)*[None]
@@ -130,7 +132,7 @@ def loadmodels():
         amodels = len(metals)*[None]
         for j in range(len(metals)):
             metal = metals[j]
-            synfile = 'synthgiants/syna{:03d}m{:.2f}.npz'.format(int(np.round(age*10)),metal)
+            synfile = datadir+'/syna{:03d}m{:.2f}.npz'.format(int(np.round(age*10)),metal)
             syntab = np.load(synfile)['tab']
             amodels[j] = syntab
         models[i] = amodels
